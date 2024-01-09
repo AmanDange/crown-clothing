@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
@@ -21,24 +21,23 @@ const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
 
-    console.log(formFields);
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
-    }
+    };
 
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-      if(password !== confirmPassword) {
-        alert("passwords do not match");
+      if (password !== confirmPassword) {
+        alert('passwords do not match');
         return;
       }
 
       try {
         const { user } = await createAuthUserWithEmailAndPassword(
-            email, 
-            password
-            );
+          email, 
+          password
+        );
 
     await createUserDocumentFromAuth(user, { displayName }); 
     resetFormFields();
@@ -49,7 +48,7 @@ const SignUpForm = () => {
         console.log('user creation encountered an error', error);
       }
     }
-    };
+  };
     
     const handleChange = (event) => {
       const { name, value } = event.target;
