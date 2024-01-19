@@ -31,6 +31,7 @@ export const ProductCartContainer = styled.div`
     button {
       opacity: 0.85;
       display: flex;
+      font-size: 14px;
     }
   }
 `;
@@ -44,10 +45,12 @@ export const Footer = styled.div`
 `;
 
 export const Name = styled.span`
-  width: 90%;
+  width: 100%;
   margin-bottom: 15px;
+  font-size: 16px;
 `;
 
 export const Price = styled.span`
-  width: 10%;
+  width: 22%;
+  font-size: 16px;
 `;
