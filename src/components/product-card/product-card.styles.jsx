@@ -31,7 +31,7 @@ export const ProductCartContainer = styled.div`
     button {
       opacity: 0.85;
       display: flex;
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 `;
