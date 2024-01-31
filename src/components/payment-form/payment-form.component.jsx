@@ -7,7 +7,19 @@ import { selectCurrentUser } from '../../store/user/user.selector';
 
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
-import { PaymentFormContainer, FormContainer, PaymentButton } from "./payment-form.styles";
+import { PaymentFormContainer, FormContainer, PaymentButton, WarningContainer } from "./payment-form.styles";
+
+// Use the options prop to customize the appearance
+const cardElementOptions = {
+  style: {
+    base: {
+      fontSize: "16px", // Adjust the font size to make the CardElement text smaller
+      "::placeholder": {
+        color: "#aab7c4", // Customize the placeholder color if needed
+      },
+    },
+  },
+};
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -16,7 +28,7 @@ const PaymentForm = () => {
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
-  const paymentHandler = async (e) => {
+  const PaymentHandler = async (e) => {
     e.preventDefault();
     
     if(!stripe || !elements) {
@@ -59,10 +71,21 @@ const PaymentForm = () => {
 
   return (
     <PaymentFormContainer>
-      <FormContainer onSubmit={paymentHandler}>
-        <h2>Credit Card Payment: </h2>
-        <CardElement />
-        <PaymentButton isLoading={isProcessingPayment} buttonType={BUTTON_TYPE_CLASSES.inverted}> Pay now </PaymentButton>
+      <WarningContainer>
+        *Please use the following for test credit card payments*
+        <h3>VISA: </h3>
+        <span>4000 0035 6000 0008</span>
+        <h3>Exp: Any Future Date, CVC: Any 3 Digits</h3>
+      </WarningContainer>
+      <FormContainer onSubmit={PaymentHandler}>
+        <h2>Credit Card Payment:</h2>
+        <CardElement options={cardElementOptions} />
+        <PaymentButton
+          isLoading={isProcessingPayment}
+          buttonType={BUTTON_TYPE_CLASSES.inverted}
+        >
+          Pay now
+        </PaymentButton>
       </FormContainer>
     </PaymentFormContainer>
   );

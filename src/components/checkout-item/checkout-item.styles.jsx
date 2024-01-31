@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CheckoutItemContainer = styled.div`
   width: 100%;
@@ -8,6 +8,11 @@ export const CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+
+  @media screen and (max-width: 800px) {
+    font-size: 15px;
+    width: 85vw;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -21,7 +26,23 @@ export const ImageContainer = styled.div`
 `;
 
 export const BaseSpan = styled.span`
-  width: 23%;
+  width: 40%;
+
+  @media screen and (max-width: 800px) {
+    font-size: 14px;
+
+    &:first-child {
+      font-size: 11px;
+    }
+  }
+`;
+
+export const Name = styled.span`
+  width: 40%;
+
+  @media screen and (max-width: 800px) {
+    font-size: 12px;
+  }
 `;
 
 export const Quantity = styled(BaseSpan)`
