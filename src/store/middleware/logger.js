@@ -11,3 +11,4 @@ export const loggerMiddleware = (store) => (next) => (action) => {
   
   console.log('next state: ', store.getState());
 };
+

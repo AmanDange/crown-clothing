@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ProductCartContainer = styled.div`
   width: 100%;
@@ -31,8 +32,30 @@ export const ProductCartContainer = styled.div`
     button {
       opacity: 0.85;
       display: flex;
-      font-size: 12px;
     }
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 40vw; //vw - view width (40%)
+    button {
+      display: block;
+      opacity: 0.9;
+      min-width: unset;
+      padding: 0 10px;
+
+      &:hover {
+        img {
+          opacity: unset;
+        }
+        button {
+          opacity: unset;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 80vw; //vw - view width (80%)
   }
 `;
 
@@ -44,13 +67,17 @@ export const Footer = styled.div`
   font-size: 18px;
 `;
 
-export const Name = styled.span`
+export const LinkToDetails = styled(Link)`
   width: 100%;
+`;
+
+export const Name = styled.span`
+  width: 90%;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 15px;
 `;
 
 export const Price = styled.span`
-  width: 22%;
-  font-size: 16px;
+  width: 20%;
+  font-size: 15px;
 `;
