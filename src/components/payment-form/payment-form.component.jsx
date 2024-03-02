@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { selectCartTotal } from '../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../store/user/user.selector';
-
+import Swal from "sweetalert2";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { PaymentFormContainer, FormContainer, PaymentButton, WarningContainer } from "./payment-form.styles";
@@ -60,11 +60,27 @@ const PaymentForm = () => {
 
     setIsProcessingPayment(false);
 
-    if(paymentResult.error) {
-      alert(paymentResult.error);
+    if (paymentResult.error) {
+      await Swal.fire({
+        title: "Error in payment",
+        text: paymentResult.error.message,
+        icon: "error",
+        showCloseButton: true,
+        showCancelButton: false,
+        confirmButtonColor: "#f44336",
+        confirmButtonText: "OK",
+      });
     } else {
       if (paymentResult.paymentIntent.status === 'succeeded') {
-         alert('Payment Successful!');
+        await Swal.fire({
+          title: "Payment Successful!",
+          text: "Thanks for your order",
+          icon: "success",
+          showCloseButton: true,
+          showCancelButton: false,
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "OK",
+        });
       }
     }
   };

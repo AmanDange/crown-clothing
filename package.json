@@ -33,8 +33,9 @@
     "scss": "^0.2.4",
     "stripe": "^14.14.0",
     "styled-components": "^6.1.8",
+    "sweetalert2": "^11.10.5",
     "typed-redux-saga": "^1.5.0",
-    "typescript": "^4", 
+    "typescript": "^4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
